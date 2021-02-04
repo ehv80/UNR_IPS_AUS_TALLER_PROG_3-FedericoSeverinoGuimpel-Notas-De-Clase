@@ -1,0 +1,147 @@
+ En Debian GNU/Linux 4.0 "Etch", 
+ para no tener problemas con el funcionamiento
+ de Ecipse 3.2.1 - "Web Tool Plataform"
+ hay que desisntalar algunos paquetes 
+ mediante la aplicación gráfica "Synaptic":
+ 
+ En mi caso tuve que hacer las siguientes cosas:
+
+ Eliminar completamente los siguientes paquetes:
+   - libgcj7-dev
+   - gcj
+   - gcj-4.1
+   - java-gcj-compat
+   - java-gcj-compat-dev
+
+   También eliminar completamente los paquetes:
+   - libgcj-common
+
+   Y todos los siguientes paquetes que pide eliminar:
+   - ant
+   - ant-optional
+   - antlr
+   - bsh
+   - classpath
+   - classpath-tools
+   - ecj-bootstrap
+   - ecj-bootstrap-gcj
+   - gappletviewer-4.1
+   - gij
+   - gij-4.1
+   - gjdoc
+   - jikes-gij
+   - junit
+   - libbcel-java
+   - libcommons-beansutils-java
+   - libcommons-cli-java
+   - libcommons-collections-java
+   - libcommons-collections3-java
+   - libcommons-dbcp-java
+   - libcommons-digester-java
+   - libcommons-el-java
+   - libcommons-launcher-java
+   - libcommons-logging-java
+   - libcommons-modeler-java
+   - libcommons-pool-java
+   - libgcj-bc
+   - libgcj7-0
+   - libgcj7-awt
+   - ligcj7-jar
+   - libhsql-java
+   - libjaxp1.3-java
+   - libjline-java
+   - libjsch-java
+   - libjzlib-java
+   - liblog4j1.2-java
+   - liblucene-java
+   - libmx4j-java
+   - libregexp-java
+   - libservlet2.3-java
+   - libservlet2.4-java
+   - libtomcat5.5-java
+   - libxalan2-java
+   - libxerces2-java
+   - libxt-java
+   - openoffice.org
+   - openoffice.org-base
+   - openoffice.org-evolution
+   - openoffice.org-filter-mobiledev
+   - openoffice.org-gcj
+   - openoffice.org-java-common
+   - openoffice.org-qa-api-test
+   - openoffice.org-qa-tools
+   - postgresql-8.1-pljava-gcj
+ 
+   Además eliminar completamente:
+   - jikes
+ 
+   Y también el paquete solicitado para eliminar:
+   - jikes-sablevm
+
+ -----------------------------------------------------
+ Agregar en archivo: /home/ehv80/.bashrc
+
+    # setea PATH si es que existe el directorio: /data/jdk1.6.0_02/bin
+    if [ -d /data/jdk1.6.0_02/bin ] ; then
+	export PATH=/data/jdk1.6.0_02/bin:"${PATH}" ;
+    fi
+
+    # setea PATH si es que existe el directorio: /data/jdk1.6.0_02/bin
+    if [ -d /data/jdk1.6.0_02/jre/bin ] ; then
+        export PATH=/data/jdk1.6.0_02/jre/bin:"${PATH}" ;
+        fi
+
+ -----------------------------------------------------
+ Para ejecutar mediante un script de bash:
+
+ Crear un archivo: /data/eclipse-3_2.sh
+ Que tenga el siguiente contenido:
+    
+    #! /bin/bash
+
+    # Script en BASH para ejecutar el eclipse en DEBIAN GNU/LINUX 4 Etch
+    . /home/ehv80/.bashrc
+    /data/eclipse/eclipse
+
+ Este archivo puede usarse para ejecutar Eclipse 3.2.1 
+ a partir de una consola de texto como por ejemplo "gnome-terminal".
+ Para ello debemos asignarle permiso de ejecución mediante:
+
+    shell> chmod u+x /data/eclipse-3_2.sh
+
+ -----------------------------------------------------
+
+ Para poder utilizar el entorno de ejecución del "Editor Visual"
+ junto con Eclipse 3.2.1 "Web Tool Plataform"
+
+ 1º Obtener el archivo: "VE-runtime-1.2.1.zip" desde el "CD de Taller 3"
+
+ 2º Descomprimir el archivo en algún directorio del sistema de archivos:
+ 
+    shell> mv VE-runtime-1.2.1.zip /data/tmp/VE-runtime-1.2.1.zip
+
+    shell> cd /data/tmp/
+
+    shell> unzip VE-runtime-1.2.1.zip
+
+    Esto crea un directorio llamado : eclipse
+
+ 3º Copiar el contenido de las carpetas respectivas, preferiblemente con
+    un administrador de archivos, como "nautilus", de la siguiente forma
+
+    - todo lo que hay en:	/data/tmp/eclipse/features
+      copiarlo a:		/data/eclipse/features
+
+    - todo lo que hay en:	/data/tmp/eclipse/plugins
+      copiarlo en:		/data/eclipse/plugins
+
+ -----------------------------------------------------
+
+ Abrir Eclipse 3.2
+
+ Window -> Preferences...
+
+   Java -> Installed JREs -> Executions Environments
+      En todos seleccionar:	jdk1.6.0_02
+
+-----------------------------------------------------

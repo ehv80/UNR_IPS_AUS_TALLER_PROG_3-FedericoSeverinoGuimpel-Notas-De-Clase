@@ -1,0 +1,78 @@
+ En Debian GNU/Linux 4.0 "Etch"
+
+ 1º En el sistema operativo acceder a los privilegios del
+    usuario mysql, y acceder al directorio base de la instalacion
+    de MySQL:
+
+    shell> su mysql
+    shell> cd /data/mysql
+
+ 2º Iniciar el sistema gestor de base de datos MySQL mediante:
+
+    shell> ./bin/mysqld_safe --user=root --log &
+
+ 3º Iniciar el cliente MySQL mediante.
+
+    shell> mysql --user=root -p
+
+ 4º Crear una nueva base de datos mediante:
+   
+    mysql> create database Taller3;
+
+ 5º Verificar que fue creada correctamente mediante:
+
+    show databases;
+
+   Debería mostrar algo como:
+   +--------------------+
+   | Database           |
+   +--------------------+
+   | information_schema |
+   | Taller3            |
+   | menagerie          |
+   | mysql              |
+   | test               |
+   +--------------------+
+
+ 6º Indicar que se va a usar la base de datos: Taller3 mediante:
+
+    mysql> use Taller3;
+
+ 7º Verificar que se está usando la base de datos: Taller3 mediante:
+
+   select database();
+
+   Debería mostrar algo como:
+   +------------+
+   | database() |
+   +------------+
+   | Taller3    |
+   +------------+
+
+ 8º Crear una tabla en la base de datos: Taller3 mediante:
+
+   mysql> create table ABM (
+   -> nombre varchar(30) not null,
+   -> apellido varchar(30) not null,
+   -> tpdoc enum('DNI', 'LC', 'LE') not null,
+   -> ndoc integer unsigned not null,
+   -> edad smallint unsigned not null,
+   -> PRIMARY KEY (ndoc)
+   -> );
+
+ 9º Para verificar que la Tabla ha sido creada correctamente:
+
+   mysql> describe ABM;
+
+   Debería mostrar algo como.
+   +----------+-----------------------+------+-----+---------+-------+
+   | Field    | Type                  | Null | Key | Default | Extra |
+   +----------+-----------------------+------+-----+---------+-------+
+   | nombre   | varchar(30)           | NO   |     |         |       |
+   | apellido | varchar(30)           | NO   |     |         |       |
+   | tpdoc    | enum('DNI','LC','LE') | NO   |     |         |       |
+   | ndoc     | int(10) unsigned      | NO   | PRI |         |       |
+   | edad     | smallint(5) unsigned  | NO   |     |         |       |
+   +----------+-----------------------+------+-----+---------+-------+
+   5 rows in set (0.00 sec)
+

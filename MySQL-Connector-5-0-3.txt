@@ -1,0 +1,39 @@
+ En Debian GNU/Linux 4.0 "Etch" 
+
+ Para usar el driver JDBC para el Sistema Gestor de Bases de Datos MySQL,
+ llamado "MySQL Connector/J"
+
+ 1º Obtener el archivo llamado "mysql-connector-java-5.0.3.zip"
+    desde el "CD de Taller 3"
+ 
+ 2º Descomprimir el archivo en algún directorio del sistema de archivos:
+    
+    shell> mv mysql-connector-java-5.0.3.zip /data/mysql-connector-java-5.0.3.zip
+    
+    shell> cd /data
+    
+    shell> unzip mysql-connector-java-5.0.3.zip
+
+ 3º En el archivo:	/homer/ehv80/.basrc
+
+   Agregar las siguientes líneas:
+
+   # setea CLASSPATH si es que existe el directorio: /data/mysql-connector-java-5.0.3
+   # para poder utilizar el driver JDBC: mysql-connector-java-5.0.3
+   if [ -d /data/mysql-connector-java-5.0.3 ] ; then
+          export CLASSPATH='/data/mysql-connector-java-5.0.3':"${CLASSPATH}";
+   fi
+
+ 4º Para incorporar el driver JDBC "MySQL Connector/J" a algún proyecto desde
+   el ECLIPSE 3.2.1 "Web Tool Plataform":
+
+   - Abrir el proyecto
+
+   - Clickear con botón derecho del mouse sobre el proyecto en cuestión
+
+   - Del menú que aparece, clickear en: "Build Path" -> "Add External Archives..."
+
+   - En el navegador de archivos que aparece seleccionar la ruta que hay que seguir
+     para encontrar el archivo: "mysql-connector-java-5.0.3-bin.jar"
+
+     En mi caso es: /data/mysql-connector-java-5.0.3/mysql-connector-java-5.0.3-bin.jar

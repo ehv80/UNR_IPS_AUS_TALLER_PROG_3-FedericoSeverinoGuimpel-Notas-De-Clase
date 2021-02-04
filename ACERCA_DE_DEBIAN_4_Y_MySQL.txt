@@ -1,0 +1,9 @@
+En Debian 4 Etch
+Para poder instalar el mysql que necesito para TALLER 3:
+He desinstalado los paquetes:
+ - mysql-client
+ - mysql-client-5.0
+
+NOTA: El paquete llamado: mysql-common no lo he podido desinstalar por motivos
+de problemas de dependencias.
+
